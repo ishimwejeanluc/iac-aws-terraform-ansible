@@ -1,8 +1,0 @@
-mdfiles
-.DS_Store
-terraform/.terraform/
-terraform/*.tfstate
-terraform/*.tfstate.*
-terraform/*.pem
-
-
