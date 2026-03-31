@@ -3,6 +3,5 @@ mdfiles
 terraform/.terraform/
 terraform/*.tfstate
 terraform/*.tfstate.*
-terraform/*.pem
-
-
+ansible/*.pem
+ansible/inventory.ini

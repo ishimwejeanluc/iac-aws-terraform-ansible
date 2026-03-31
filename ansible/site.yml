@@ -2,15 +2,32 @@
 - name: Configure web server
   hosts: web
   become: true
+  gather_facts: true
   tasks:
+    - name: Enable nginx via amazon-linux-extras
+      ansible.builtin.command: amazon-linux-extras enable nginx1
+      changed_when: false
+
     - name: Install Nginx
-      ansible.builtin.package:
-        name: nginx
-        state: present
+      ansible.builtin.command: yum -y install nginx
+      register: nginx_install
+      changed_when: "'Nothing to do' not in nginx_install.stdout"
+
+    - name: Check if Nginx web root exists
+      ansible.builtin.stat:
+        path: /usr/share/nginx/html
+      register: nginx_web_root
+
+    - name: Create Nginx web root if missing
+      ansible.builtin.file:
+        path: /usr/share/nginx/html
+        state: directory
+        mode: "0755"
+      when: not nginx_web_root.stat.exists
 
     - name: Deploy web app
-      ansible.builtin.template:
-        src: templates/index.html.j2
+      ansible.builtin.copy:
+        src: index.html
         dest: /usr/share/nginx/html/index.html
         mode: "0644"
       notify: Restart Nginx
@@ -20,6 +37,12 @@
         name: nginx
         state: started
         enabled: true
+
+    - name: Wait for Nginx to be available
+      ansible.builtin.wait_for:
+        port: 80
+        delay: 2
+        timeout: 60
 
   handlers:
     - name: Restart Nginx

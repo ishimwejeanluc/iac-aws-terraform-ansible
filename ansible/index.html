@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basketball Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* ========== Reset & Base ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #f0f0f0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ========== Animated Basketball Background ========== */
+    body::before {
+      content: '🏀';
+      position: fixed;
+      font-size: 300px;
+      opacity: 0.03;
+      top: -50px;
+      right: -80px;
+      animation: floatBall 6s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    @keyframes floatBall {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(15deg); }
+    }
+
+    /* ========== Header / Hero ========== */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 80px 20px 60px;
+      background: linear-gradient(180deg, rgba(255, 107, 0, 0.15) 0%, transparent 100%);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 107, 0, 0.2);
+      border: 1px solid rgba(255, 107, 0, 0.4);
+      color: #ff6b00;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #ff6b00, #ff9a44, #ffcc00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #a0aec0;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ========== Infrastructure Banner ========== */
+    .infra-banner {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      padding: 30px 20px;
+      background: rgba(255,255,255,0.03);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .infra-item {
+      text-align: center;
+    }
+
+    .infra-item .label {
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #718096;
+      margin-bottom: 4px;
+    }
+
+    .infra-item .value {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ff9a44;
+    }
+
+    /* ========== Cards Grid ========== */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 50px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #718096;
+      margin-bottom: 40px;
+      font-size: 0.95rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 32px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(255, 107, 0, 0.15);
+      border-color: rgba(255, 107, 0, 0.3);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #a0aec0;
+      line-height: 1.6;
+    }
+
+    /* ========== Stats Section ========== */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .stat-card {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(255, 107, 0, 0.1), rgba(255, 204, 0, 0.05));
+      border: 1px solid rgba(255, 107, 0, 0.15);
+      border-radius: 16px;
+      padding: 30px 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover { transform: scale(1.05); }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ff6b00, #ffcc00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: #718096;
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ========== Legends Table ========== */
+    .legends-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 60px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .legends-table thead { background: rgba(255, 107, 0, 0.15); }
+
+    .legends-table th {
+      padding: 14px 20px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #ff9a44;
+    }
+
+    .legends-table td {
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.9rem;
+      color: #cbd5e0;
+    }
+
+    .legends-table tbody tr {
+      transition: background 0.2s ease;
+    }
+
+    .legends-table tbody tr:hover {
+      background: rgba(255, 107, 0, 0.06);
+    }
+
+    /* ========== Quote Section ========== */
+    .quote-section {
+      text-align: center;
+      padding: 50px 20px;
+      margin-bottom: 40px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .quote-section blockquote {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.5;
+      color: #e2e8f0;
+      max-width: 700px;
+      margin: 0 auto 16px;
+    }
+
+    .quote-section cite {
+      font-size: 0.9rem;
+      color: #ff9a44;
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    /* ========== Footer ========== */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: #4a5568;
+      font-size: 0.8rem;
+    }
+
+    footer .tech-stack {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    footer .tech-badge {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      color: #718096;
+    }
+
+    /* ========== Responsive ========== */
+    @media (max-width: 600px) {
+      .infra-banner { gap: 20px; }
+      .cards { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== Hero Section ==================== -->
+  <section class="hero">
+    <div class="hero-badge">Live on AWS</div>
+    <h1>Basketball Central</h1>
+    <p>Your ultimate destination for basketball history, stats, and legends. Deployed with modern DevOps practices.</p>
+  </section>
+
+  <!-- ==================== Infrastructure Banner ==================== -->
+  <div class="infra-banner">
+    <div class="infra-item">
+      <div class="label">Provisioned by</div>
+      <div class="value">Terraform</div>
+    </div>
+    <div class="infra-item">
+      <div class="label">Configured by</div>
+      <div class="value">Ansible</div>
+    </div>
+    <div class="infra-item">
+      <div class="label">Web Server</div>
+      <div class="value">Nginx</div>
+    </div>
+    <div class="infra-item">
+      <div class="label">Platform</div>
+      <div class="value">Amazon Linux 2</div>
+    </div>
+    <div class="infra-item">
+      <div class="label">Status</div>
+      <div class="value">● Online</div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ==================== Cards Section ==================== -->
+    <h2 class="section-title">The Beautiful Game</h2>
+    <p class="section-subtitle">Explore what makes basketball the world's most exciting sport</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏀</div>
+        <h3>The Game</h3>
+        <p>Basketball is played between two teams of five on a rectangular court. The objective — shoot through the opponent's hoop (10 feet high) while preventing them from scoring on yours. Simple rules, infinite possibilities.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏆</div>
+        <h3>NBA Legacy</h3>
+        <p>Founded in 1946, the NBA has grown into a global phenomenon with 30 teams across the US and Canada. The Finals remain one of the most-watched sporting events on the planet every June.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⭐</div>
+        <h3>All-Star Weekend</h3>
+        <p>Every February, the league's best gather for the All-Star Game, Slam Dunk Contest, and Three-Point Shootout — a celebration of skill, athleticism, and showmanship.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <h3>Global Impact</h3>
+        <p>From FIBA World Cup to Olympic basketball, the sport connects 450+ million players in over 200 countries. Basketball truly speaks every language.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Analytics Revolution</h3>
+        <p>Modern basketball is driven by data — player tracking, shot charts, and advanced metrics like PER, Win Shares, and True Shooting Percentage have transformed how teams build rosters.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3>Three-Point Era</h3>
+        <p>The three-point line (introduced in 1979) has reshaped basketball strategy. Today's teams attempt more threes than ever, with spacing and shooting becoming the most valued skills.</p>
+      </div>
+    </div>
+
+    <!-- ==================== Stats Section ==================== -->
+    <h2 class="section-title">By the Numbers</h2>
+    <p class="section-subtitle">Key numbers that define basketball</p>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number">94 ft</div>
+        <div class="stat-label">Court Length</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">10 ft</div>
+        <div class="stat-label">Rim Height</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">48 min</div>
+        <div class="stat-label">Game Duration</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">24 sec</div>
+        <div class="stat-label">Shot Clock</div>
+      </div>
+    </div>
+
+    <!-- ==================== Legends Table ==================== -->
+    <h2 class="section-title">All-Time Legends</h2>
+    <p class="section-subtitle">The greatest to ever play the game</p>
+
+    <table class="legends-table">
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>Team(s)</th>
+          <th>Championships</th>
+          <th>Career Points</th>
+          <th>Era</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🐐 Michael Jordan</td>
+          <td>Chicago Bulls</td>
+          <td>6</td>
+          <td>32,292</td>
+          <td>1984–2003</td>
+        </tr>
+        <tr>
+          <td>👑 LeBron James</td>
+          <td>Cavaliers / Heat / Lakers</td>
+          <td>4</td>
+          <td>40,474+</td>
+          <td>2003–Present</td>
+        </tr>
+        <tr>
+          <td>🪄 Magic Johnson</td>
+          <td>LA Lakers</td>
+          <td>5</td>
+          <td>17,707</td>
+          <td>1979–1996</td>
+        </tr>
+        <tr>
+          <td>🏔️ Kobe Bryant</td>
+          <td>LA Lakers</td>
+          <td>5</td>
+          <td>33,643</td>
+          <td>1996–2016</td>
+        </tr>
+        <tr>
+          <td>👨‍🍳 Stephen Curry</td>
+          <td>Golden State Warriors</td>
+          <td>4</td>
+          <td>22,000+</td>
+          <td>2009–Present</td>
+        </tr>
+        <tr>
+          <td>🦈 Shaquille O'Neal</td>
+          <td>Lakers / Heat / Others</td>
+          <td>4</td>
+          <td>28,596</td>
+          <td>1992–2011</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ==================== Quote Section ==================== -->
+    <div class="quote-section">
+      <blockquote>"I've missed more than 9,000 shots in my career. I've lost almost 300 games. Twenty-six times I've been trusted to take the game-winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed."</blockquote>
+      <cite>— Michael Jordan</cite>
+    </div>
+
+  </div>
+
+  <!-- ==================== Footer ==================== -->
+  <footer>
+    <div class="tech-stack">
+      <span class="tech-badge">Terraform v1.5+</span>
+      <span class="tech-badge">Ansible 2.14+</span>
+      <span class="tech-badge">Nginx</span>
+      <span class="tech-badge">Amazon Linux 2</span>
+      <span class="tech-badge">AWS EC2</span>
+    </div>
+    <p>Provisioned with Terraform · Configured with Ansible · DevOps Lab Project</p>
+    <p style="margin-top: 6px;">2025 — Infrastructure as Code Demo</p>
+  </footer>
+
+</body>
+</html>

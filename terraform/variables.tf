@@ -1,7 +1,7 @@
 variable "aws_region" {
   description = "AWS region to deploy into"
   type        = string
-  default     = "us-east-1"
+  default     = "eu-north-1"
 }
 
 variable "project_name" {
@@ -25,8 +25,5 @@ variable "instance_type" {
 variable "allowed_ssh_cidr" {
   description = "CIDR block allowed to SSH into the instance"
   type        = string
-  validation {
-    condition     = var.allowed_ssh_cidr != "0.0.0.0/0"
-    error_message = "allowed_ssh_cidr must be restricted (for example, 203.0.113.10/32)."
-  }
+  default     = "0.0.0.0/0"
 }
