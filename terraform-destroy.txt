@@ -1,0 +1,337 @@
+tls_private_key.ssh: Refreshing state... [id=26dae42e44a24dd6ef3313fbb8c6594678491b95]
+local_sensitive_file.private_key: Refreshing state... [id=3b10494587146bf1b94e42a33b796735d538bc81]
+data.aws_vpc.default: Reading...
+data.aws_ami.amazon_linux_2: Reading...
+aws_key_pair.this: Refreshing state... [id=devops-lab-key]
+data.aws_ami.amazon_linux_2: Read complete after 2s [id=ami-08ae1035a3a101a88]
+data.aws_vpc.default: Read complete after 2s [id=vpc-0b5a91f12c118996d]
+aws_security_group.web_sg: Refreshing state... [id=sg-06adffbd673c4312f]
+data.aws_subnets.default: Reading...
+data.aws_subnets.default: Read complete after 0s [id=eu-west-1]
+aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Refreshing state... [id=sgr-0d9f33ec592ed93df]
+aws_vpc_security_group_ingress_rule.allow_http_ipv4: Refreshing state... [id=sgr-03f2c2b0c123eec52]
+aws_vpc_security_group_ingress_rule.allow_ssh_ipv4: Refreshing state... [id=sgr-0736ea81390b531e8]
+aws_instance.web: Refreshing state... [id=i-058d6da09de341d1a]
+local_file.ansible_inventory: Refreshing state... [id=47ceb2fee77117a28228e03cecadb04cacfc38ee]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_instance.web will be destroyed
+  - resource "aws_instance" "web" {
+      - ami                                  = "ami-08ae1035a3a101a88" -> null
+      - arn                                  = "arn:aws:ec2:eu-west-1:497924967546:instance/i-058d6da09de341d1a" -> null
+      - associate_public_ip_address          = true -> null
+      - availability_zone                    = "eu-west-1a" -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - force_destroy                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - id                                   = "i-058d6da09de341d1a" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t2.micro" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - key_name                             = "devops-lab-key" -> null
+      - monitoring                           = false -> null
+      - placement_partition_number           = 0 -> null
+      - primary_network_interface_id         = "eni-0440ec4dd2c476430" -> null
+      - private_dns                          = "ip-172-31-31-40.eu-west-1.compute.internal" -> null
+      - private_ip                           = "172.31.31.40" -> null
+      - public_dns                           = "ec2-54-217-1-144.eu-west-1.compute.amazonaws.com" -> null
+      - public_ip                            = "54.217.1.144" -> null
+      - region                               = "eu-west-1" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [
+          - "devops-lab4-sg",
+        ] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-0e54a7125ec8c5ead" -> null
+      - tags                                 = {
+          - "Name" = "devops-lab4-web"
+        } -> null
+      - tags_all                             = {
+          - "Name" = "devops-lab4-web"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data_replace_on_change          = false -> null
+      - vpc_security_group_ids               = [
+          - "sg-06adffbd673c4312f",
+        ] -> null
+        # (8 unchanged attributes hidden)
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - cpu_options {
+          - core_count            = 1 -> null
+          - threads_per_core      = 1 -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - credit_specification {
+          - cpu_credits = "standard" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 1 -> null
+          - http_tokens                 = "optional" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - primary_network_interface {
+          - delete_on_termination = true -> null
+          - network_interface_id  = "eni-0440ec4dd2c476430" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/xvda" -> null
+          - encrypted             = false -> null
+          - iops                  = 100 -> null
+          - tags                  = {} -> null
+          - tags_all              = {} -> null
+          - throughput            = 0 -> null
+          - volume_id             = "vol-0eeb5af217d0f4842" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp2" -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_key_pair.this will be destroyed
+  - resource "aws_key_pair" "this" {
+      - arn             = "arn:aws:ec2:eu-west-1:497924967546:key-pair/devops-lab-key" -> null
+      - fingerprint     = "93:a2:09:a6:8a:b3:05:84:00:53:cf:d6:5c:82:a9:28" -> null
+      - id              = "devops-lab-key" -> null
+      - key_name        = "devops-lab-key" -> null
+      - key_pair_id     = "key-0f229c37fec0bb472" -> null
+      - key_type        = "rsa" -> null
+      - public_key      = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCyaR/kaP/EJNOu7UOHN0tF4IWIWV6sXC9QPitZvjRAPDtSkpcl1z6kvn5A5y1WvkZW0zweUOjxbNsHvhdmagmoUx63lw+AQLCjU2qOOo+hOeYRL5WrUFpB6mCxTUlU2hjnIGG1lfTKJ6431v04nxBsEteY7MWgq43+l52r+irSWUxKIT3omFREV1P2k0rVMUZ7EfIJ/RTJnTvQMNFDZZNweekvJwwR0c7DSsZVaiX6sTGimIrXdazbM1feNNCt++XhwqHZzwgZ6SZmgcjC6fbCFyQwNAthdZ8siSEx0udyjgp34D6qTybMNg1OTp4GTgJyc4Lo/gGtbsSvYx8SIiymf55iUnNwToe+yO6XOIJsrga3linZQr5e0LLajvyMYm3k4UofrE0r/X7RyUIwfbN32CQZFChkle6HZKECz+fzlbdiAqbFFCfxoVDpGuYNef47aACBCMyQn67vcNSzu+LaNKVhZdi5isq0D0RX33dA05QQNtQJ6tePNhtDVjrWM182h3rWPiwMAXjytVEnNXkvrKZiHvkf4P0wABD8G7I9oHj1GPsHfe1cCXDesS4j0Gb3DN3lQ/fCWk2PqN852LgLqrlc/KCj4S6z9V72vNI3Cng3+76+f2FfezorelOwfcD4pBEkhjUGF5gfSA0ScCm5BFrWAs5BTH678MoMBYyfNw==" -> null
+      - region          = "eu-west-1" -> null
+      - tags            = {} -> null
+      - tags_all        = {} -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_security_group.web_sg will be destroyed
+  - resource "aws_security_group" "web_sg" {
+      - arn                    = "arn:aws:ec2:eu-west-1:497924967546:security-group/sg-06adffbd673c4312f" -> null
+      - description            = "Web access for devops-lab4" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+                # (1 unchanged attribute hidden)
+            },
+        ] -> null
+      - id                     = "sg-06adffbd673c4312f" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - from_port        = 22
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 22
+                # (1 unchanged attribute hidden)
+            },
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - from_port        = 80
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 80
+                # (1 unchanged attribute hidden)
+            },
+        ] -> null
+      - name                   = "devops-lab4-sg" -> null
+      - owner_id               = "497924967546" -> null
+      - region                 = "eu-west-1" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Name" = "devops-lab4-sg"
+        } -> null
+      - tags_all               = {
+          - "Name" = "devops-lab4-sg"
+        } -> null
+      - vpc_id                 = "vpc-0b5a91f12c118996d" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4 will be destroyed
+  - resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
+      - arn                    = "arn:aws:ec2:eu-west-1:497924967546:security-group-rule/sgr-0d9f33ec592ed93df" -> null
+      - cidr_ipv4              = "0.0.0.0/0" -> null
+      - id                     = "sgr-0d9f33ec592ed93df" -> null
+      - ip_protocol            = "-1" -> null
+      - region                 = "eu-west-1" -> null
+      - security_group_id      = "sg-06adffbd673c4312f" -> null
+      - security_group_rule_id = "sgr-0d9f33ec592ed93df" -> null
+      - tags_all               = {} -> null
+    }
+
+  # aws_vpc_security_group_ingress_rule.allow_http_ipv4 will be destroyed
+  - resource "aws_vpc_security_group_ingress_rule" "allow_http_ipv4" {
+      - arn                    = "arn:aws:ec2:eu-west-1:497924967546:security-group-rule/sgr-03f2c2b0c123eec52" -> null
+      - cidr_ipv4              = "0.0.0.0/0" -> null
+      - from_port              = 80 -> null
+      - id                     = "sgr-03f2c2b0c123eec52" -> null
+      - ip_protocol            = "tcp" -> null
+      - region                 = "eu-west-1" -> null
+      - security_group_id      = "sg-06adffbd673c4312f" -> null
+      - security_group_rule_id = "sgr-03f2c2b0c123eec52" -> null
+      - tags_all               = {} -> null
+      - to_port                = 80 -> null
+    }
+
+  # aws_vpc_security_group_ingress_rule.allow_ssh_ipv4 will be destroyed
+  - resource "aws_vpc_security_group_ingress_rule" "allow_ssh_ipv4" {
+      - arn                    = "arn:aws:ec2:eu-west-1:497924967546:security-group-rule/sgr-0736ea81390b531e8" -> null
+      - cidr_ipv4              = "0.0.0.0/0" -> null
+      - from_port              = 22 -> null
+      - id                     = "sgr-0736ea81390b531e8" -> null
+      - ip_protocol            = "tcp" -> null
+      - region                 = "eu-west-1" -> null
+      - security_group_id      = "sg-06adffbd673c4312f" -> null
+      - security_group_rule_id = "sgr-0736ea81390b531e8" -> null
+      - tags_all               = {} -> null
+      - to_port                = 22 -> null
+    }
+
+  # local_file.ansible_inventory will be destroyed
+  - resource "local_file" "ansible_inventory" {
+      - content              = <<-EOT
+            [web]
+            54.217.1.144 ansible_user=ec2-user ansible_ssh_private_key_file=/Users/Lukatoni/myworks/amalitech/advancedIac/iac-aws-terraform-ansible/ansible/devops-lab-key.pem
+        EOT -> null
+      - content_base64sha256 = "huFwuIVCadMGcP0rZYWzoPCB/5hODL0kXXV4ObRWMXs=" -> null
+      - content_base64sha512 = "rC05r/IYJ/S/q1Axy5sGi6rbF2AKV10oC5FxMhenqbzEORBt7OUeSbS/xuYG5GpNGuv+dYDqE2zoN11XzRJQEg==" -> null
+      - content_md5          = "da2f0e50241eb8004f362e09790196f5" -> null
+      - content_sha1         = "47ceb2fee77117a28228e03cecadb04cacfc38ee" -> null
+      - content_sha256       = "86e170b8854269d30670fd2b6585b3a0f081ff984e0cbd245d757839b456317b" -> null
+      - content_sha512       = "ac2d39aff21827f4bfab5031cb9b068baadb17600a575d280b91713217a7a9bcc439106dece51e49b4bfc6e606e46a4d1aebfe7580ea136ce8375d57cd125012" -> null
+      - directory_permission = "0777" -> null
+      - file_permission      = "0777" -> null
+      - filename             = "/Users/Lukatoni/myworks/amalitech/advancedIac/iac-aws-terraform-ansible/ansible/inventory.ini" -> null
+      - id                   = "47ceb2fee77117a28228e03cecadb04cacfc38ee" -> null
+    }
+
+  # local_sensitive_file.private_key will be destroyed
+  - resource "local_sensitive_file" "private_key" {
+      - content              = (sensitive value) -> null
+      - content_base64sha256 = "4IIPEXN6czW9W4nFL76TzMd/utBjhaS08qCeUVRb9w8=" -> null
+      - content_base64sha512 = "IWfRsaHzAowT1Mc6HIY2D/XXxwTOtkAFtkWlE9lBlBcD3qPHPr/YE/DsOGXMrpkuzrqWkzB6H4JmVI8QgB6Q5w==" -> null
+      - content_md5          = "ea5e62d723c17c11a2c03f1d74d74478" -> null
+      - content_sha1         = "3b10494587146bf1b94e42a33b796735d538bc81" -> null
+      - content_sha256       = "e0820f11737a7335bd5b89c52fbe93ccc77fbad06385a4b4f2a09e51545bf70f" -> null
+      - content_sha512       = "2167d1b1a1f3028c13d4c73a1c86360ff5d7c704ceb64005b645a513d941941703dea3c73ebfd813f0ec3865ccae992eceba9693307a1f8266548f10801e90e7" -> null
+      - directory_permission = "0700" -> null
+      - file_permission      = "0400" -> null
+      - filename             = "/Users/Lukatoni/myworks/amalitech/advancedIac/iac-aws-terraform-ansible/ansible/devops-lab-key.pem" -> null
+      - id                   = "3b10494587146bf1b94e42a33b796735d538bc81" -> null
+    }
+
+  # tls_private_key.ssh will be destroyed
+  - resource "tls_private_key" "ssh" {
+      - algorithm                     = "RSA" -> null
+      - ecdsa_curve                   = "P224" -> null
+      - id                            = "26dae42e44a24dd6ef3313fbb8c6594678491b95" -> null
+      - private_key_openssh           = (sensitive value) -> null
+      - private_key_pem               = (sensitive value) -> null
+      - private_key_pem_pkcs8         = (sensitive value) -> null
+      - public_key_fingerprint_md5    = "cb:e1:a6:aa:58:15:6a:e5:27:c2:bb:31:b8:ee:34:54" -> null
+      - public_key_fingerprint_sha256 = "SHA256:8iC2JLHyY46El/Xv+QBOZns+nHJs04zMKFuBIbdjxME" -> null
+      - public_key_openssh            = <<-EOT
+            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCyaR/kaP/EJNOu7UOHN0tF4IWIWV6sXC9QPitZvjRAPDtSkpcl1z6kvn5A5y1WvkZW0zweUOjxbNsHvhdmagmoUx63lw+AQLCjU2qOOo+hOeYRL5WrUFpB6mCxTUlU2hjnIGG1lfTKJ6431v04nxBsEteY7MWgq43+l52r+irSWUxKIT3omFREV1P2k0rVMUZ7EfIJ/RTJnTvQMNFDZZNweekvJwwR0c7DSsZVaiX6sTGimIrXdazbM1feNNCt++XhwqHZzwgZ6SZmgcjC6fbCFyQwNAthdZ8siSEx0udyjgp34D6qTybMNg1OTp4GTgJyc4Lo/gGtbsSvYx8SIiymf55iUnNwToe+yO6XOIJsrga3linZQr5e0LLajvyMYm3k4UofrE0r/X7RyUIwfbN32CQZFChkle6HZKECz+fzlbdiAqbFFCfxoVDpGuYNef47aACBCMyQn67vcNSzu+LaNKVhZdi5isq0D0RX33dA05QQNtQJ6tePNhtDVjrWM182h3rWPiwMAXjytVEnNXkvrKZiHvkf4P0wABD8G7I9oHj1GPsHfe1cCXDesS4j0Gb3DN3lQ/fCWk2PqN852LgLqrlc/KCj4S6z9V72vNI3Cng3+76+f2FfezorelOwfcD4pBEkhjUGF5gfSA0ScCm5BFrWAs5BTH678MoMBYyfNw==
+        EOT -> null
+      - public_key_pem                = <<-EOT
+            -----BEGIN PUBLIC KEY-----
+            MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsmkf5Gj/xCTTru1DhzdL
+            ReCFiFlerFwvUD4rWb40QDw7UpKXJdc+pL5+QOctVr5GVtM8HlDo8WzbB74XZmoJ
+            qFMet5cPgECwo1NqjjqPoTnmES+Vq1BaQepgsU1JVNoY5yBhtZX0yieuN9b9OJ8Q
+            bBLXmOzFoKuN/pedq/oq0llMSiE96JhURFdT9pNK1TFGexHyCf0UyZ070DDRQ2WT
+            cHnpLycMEdHOw0rGVWol+rExopiK13Ws2zNX3jTQrfvl4cKh2c8IGekmZoHIwun2
+            whckMDQLYXWfLIkhMdLnco4Kd+A+qk8mzDYNTk6eBk4CcnOC6P4BrW7Er2MfEiIs
+            pn+eYlJzcE6HvsjulziCbK4Gt5Yp2UK+XtCy2o78jGJt5OFKH6xNK/1+0clCMH2z
+            d9gkGRQoZJXuh2ShAs/n85W3YgKmxRQn8aFQ6RrmDXn+O2gAgQjMkJ+u73DUs7vi
+            2jSlYWXYuYrKtA9EV993QNOUEDbUCerXjzYbQ1Y61jNfNod61j4sDAF48rVRJzV5
+            L6ymYh75H+D9MAAQ/BuyPaB49Rj7B33tXAlw3rEuI9Bm9wzd5UP3wlpNj6jfOdi4
+            C6q5XPygo+Eus/Ve9rzSNwp4N/u+vn9hX3s6K3pTsH3A+KQRJIY1BheYH0gNEnAp
+            uQRa1gLOQUx+u/DKDAWMnzcCAwEAAQ==
+            -----END PUBLIC KEY-----
+        EOT -> null
+      - rsa_bits                      = 4096 -> null
+    }
+
+Plan: 0 to add, 0 to change, 9 to destroy.
+
+Changes to Outputs:
+  - key_name         = "devops-lab-key" -> null
+  - private_key_path = "/Users/Lukatoni/myworks/amalitech/advancedIac/iac-aws-terraform-ansible/ansible/devops-lab-key.pem" -> null
+  - public_dns       = "ec2-54-217-1-144.eu-west-1.compute.amazonaws.com" -> null
+  - public_ip        = "54.217.1.144" -> null
+  - ssh_user         = "ec2-user" -> null
+local_file.ansible_inventory: Destroying... [id=47ceb2fee77117a28228e03cecadb04cacfc38ee]
+local_sensitive_file.private_key: Destroying... [id=3b10494587146bf1b94e42a33b796735d538bc81]
+local_sensitive_file.private_key: Destruction complete after 0s
+local_file.ansible_inventory: Destruction complete after 0s
+aws_vpc_security_group_ingress_rule.allow_http_ipv4: Destroying... [id=sgr-03f2c2b0c123eec52]
+aws_vpc_security_group_ingress_rule.allow_ssh_ipv4: Destroying... [id=sgr-0736ea81390b531e8]
+aws_instance.web: Destroying... [id=i-058d6da09de341d1a]
+aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Destroying... [id=sgr-0d9f33ec592ed93df]
+aws_vpc_security_group_ingress_rule.allow_ssh_ipv4: Destruction complete after 1s
+aws_vpc_security_group_ingress_rule.allow_http_ipv4: Destruction complete after 1s
+aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Destruction complete after 1s
+aws_instance.web: Still destroying... [id=i-058d6da09de341d1a, 00m10s elapsed]
+aws_instance.web: Still destroying... [id=i-058d6da09de341d1a, 00m20s elapsed]
+aws_instance.web: Still destroying... [id=i-058d6da09de341d1a, 00m30s elapsed]
+aws_instance.web: Destruction complete after 32s
+aws_key_pair.this: Destroying... [id=devops-lab-key]
+aws_security_group.web_sg: Destroying... [id=sg-06adffbd673c4312f]
+aws_key_pair.this: Destruction complete after 0s
+tls_private_key.ssh: Destroying... [id=26dae42e44a24dd6ef3313fbb8c6594678491b95]
+tls_private_key.ssh: Destruction complete after 0s
+aws_security_group.web_sg: Destruction complete after 1s
+
+Destroy complete! Resources: 9 destroyed.

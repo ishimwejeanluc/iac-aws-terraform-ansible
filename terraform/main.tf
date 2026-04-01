@@ -22,7 +22,7 @@ provider "aws" {
 
 locals {
   ssh_user         = "ec2-user"
-  private_key_path = "${path.module}/../ansible/${var.key_name}.pem"
+  private_key_path = abspath("${path.module}/../ansible/${var.key_name}.pem")
 }
 
 resource "tls_private_key" "ssh" {
@@ -113,8 +113,8 @@ resource "aws_instance" "web" {
 }
 
 resource "local_file" "ansible_inventory" {
-  filename = "${path.module}/../ansible/inventory.ini"
-  content = templatefile("${path.module}/../ansible/inventory.tmpl", {
+  filename = abspath("${path.module}/../ansible/inventory.ini")
+  content = templatefile(abspath("${path.module}/../ansible/inventory.tmpl"), {
     public_ip       = aws_instance.web.public_ip
     ssh_user        = local.ssh_user
     private_key_path = local.private_key_path

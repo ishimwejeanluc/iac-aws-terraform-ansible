@@ -1,13 +1,13 @@
 variable "aws_region" {
   description = "AWS region to deploy into"
   type        = string
-  default     = "eu-north-1"
+  default     = "eu-west-1"
 }
 
 variable "project_name" {
   description = "Project name prefix for resource naming"
   type        = string
-  default     = "devops-lab"
+  default     = "devops-lab4"
 }
 
 variable "key_name" {
