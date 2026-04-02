@@ -1,7 +1,7 @@
 data.aws_vpc.default: Reading...
 data.aws_ami.amazon_linux_2: Reading...
-data.aws_ami.amazon_linux_2: Read complete after 2s [id=ami-08ae1035a3a101a88]
-data.aws_vpc.default: Read complete after 3s [id=vpc-0b5a91f12c118996d]
+data.aws_ami.amazon_linux_2: Read complete after 7s [id=ami-08739a9b976f7a0e1]
+data.aws_vpc.default: Read complete after 9s [id=vpc-0b5a91f12c118996d]
 data.aws_subnets.default: Reading...
 data.aws_subnets.default: Read complete after 0s [id=eu-west-1]
 
@@ -13,7 +13,7 @@ Terraform will perform the following actions:
 
   # aws_instance.web will be created
   + resource "aws_instance" "web" {
-      + ami                                  = "ami-08ae1035a3a101a88"
+      + ami                                  = "ami-08739a9b976f7a0e1"
       + arn                                  = (known after apply)
       + associate_public_ip_address          = true
       + availability_zone                    = (known after apply)
@@ -219,24 +219,26 @@ Changes to Outputs:
   + ssh_user         = "ec2-user"
 tls_private_key.ssh: Creating...
 aws_security_group.web_sg: Creating...
-aws_security_group.web_sg: Creation complete after 5s [id=sg-06adffbd673c4312f]
-aws_vpc_security_group_ingress_rule.allow_http_ipv4: Creating...
-aws_vpc_security_group_ingress_rule.allow_ssh_ipv4: Creating...
-aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Creating...
-aws_vpc_security_group_ingress_rule.allow_ssh_ipv4: Creation complete after 0s [id=sgr-0736ea81390b531e8]
-aws_vpc_security_group_ingress_rule.allow_http_ipv4: Creation complete after 1s [id=sgr-03f2c2b0c123eec52]
-aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Creation complete after 1s [id=sgr-0d9f33ec592ed93df]
-tls_private_key.ssh: Still creating... [00m10s elapsed]
-tls_private_key.ssh: Creation complete after 15s [id=26dae42e44a24dd6ef3313fbb8c6594678491b95]
+tls_private_key.ssh: Creation complete after 5s [id=aab7ab91aeb544f52f403d52d0ee95ab323a6249]
 aws_key_pair.this: Creating...
 local_sensitive_file.private_key: Creating...
-local_sensitive_file.private_key: Creation complete after 0s [id=3b10494587146bf1b94e42a33b796735d538bc81]
-aws_key_pair.this: Creation complete after 2s [id=devops-lab-key]
+local_sensitive_file.private_key: Creation complete after 0s [id=f5263cc3ac5cb943c7eb5c6ff9a2aa74e1eddc19]
+aws_key_pair.this: Creation complete after 1s [id=devops-lab-key]
+aws_security_group.web_sg: Creation complete after 7s [id=sg-0e601c05ae21d9f92]
+aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Creating...
+aws_vpc_security_group_ingress_rule.allow_http_ipv4: Creating...
+aws_vpc_security_group_ingress_rule.allow_ssh_ipv4: Creating...
 aws_instance.web: Creating...
+aws_vpc_security_group_ingress_rule.allow_ssh_ipv4: Creation complete after 1s [id=sgr-007464cbd2021fc7d]
+aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Creation complete after 1s [id=sgr-086eb208929914258]
 aws_instance.web: Still creating... [00m10s elapsed]
-aws_instance.web: Creation complete after 15s [id=i-058d6da09de341d1a]
+aws_vpc_security_group_ingress_rule.allow_http_ipv4: Still creating... [00m10s elapsed]
+aws_vpc_security_group_ingress_rule.allow_http_ipv4: Creation complete after 15s [id=sgr-0b16f9c25d4edab56]
+aws_instance.web: Still creating... [00m20s elapsed]
+aws_instance.web: Still creating... [00m30s elapsed]
+aws_instance.web: Creation complete after 36s [id=i-056e44db915cb5da8]
 local_file.ansible_inventory: Creating...
-local_file.ansible_inventory: Creation complete after 0s [id=47ceb2fee77117a28228e03cecadb04cacfc38ee]
+local_file.ansible_inventory: Creation complete after 0s [id=0a2615aa6df612b440bd4c586473fa5c00467fed]
 
 Apply complete! Resources: 9 added, 0 changed, 0 destroyed.
 
@@ -244,6 +246,6 @@ Outputs:
 
 key_name = "devops-lab-key"
 private_key_path = "/Users/Lukatoni/myworks/amalitech/advancedIac/iac-aws-terraform-ansible/ansible/devops-lab-key.pem"
-public_dns = "ec2-54-217-1-144.eu-west-1.compute.amazonaws.com"
-public_ip = "54.217.1.144"
+public_dns = "ec2-3-249-188-105.eu-west-1.compute.amazonaws.com"
+public_ip = "3.249.188.105"
 ssh_user = "ec2-user"

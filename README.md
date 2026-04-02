@@ -112,6 +112,21 @@ terraform -chdir=terraform plan
 ansible-playbook -i ansible/inventory.ini ansible/site.yml --check
 ```
 
+
+## 13. Screenshots
+
+### Accessing the Site via Web Browser (Chrome)
+![Access via Chrome](screenshots/chromescreenshoot.png)
+
+*Above: The static site deployed on AWS EC2, accessed through Chrome. Shows the Basketball Central homepage, provisioned by Terraform and configured by Ansible.*
+
+### Accessing the Site via CLI (curl)
+![Access via curl](screenshots/curl.png)
+
+*Above: The same site accessed from the command line using curl, demonstrating successful HTTP response and HTML content served by Nginx.*
+
+---
+
 ## 10. Troubleshooting
 - AWS permissions errors: verify IAM permissions for EC2/VPC/key pairs.
 - SSH failures: confirm the public IP, username, and key path in ansible/inventory.ini.
