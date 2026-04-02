@@ -5,3 +5,4 @@ terraform/*.tfstate
 terraform/*.tfstate.*
 ansible/*.pem
 ansible/inventory.ini
+deepdive 

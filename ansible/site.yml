@@ -2,7 +2,19 @@
 - name: Configure web server
   hosts: web
   become: true
-  gather_facts: true
+  gather_facts: false
+  pre_tasks:
+    - name: Ensure Python 3.8 is installed
+      ansible.builtin.raw: |
+        if ! command -v python3.8 >/dev/null 2>&1; then
+          sudo amazon-linux-extras enable python3.8 >/dev/null 2>&1 || true
+          sudo yum -y install python38
+        fi
+      changed_when: false
+
+    - name: Gather facts
+      ansible.builtin.setup:
+
   tasks:
     - name: Enable nginx via amazon-linux-extras
       ansible.builtin.command: amazon-linux-extras enable nginx1

@@ -1,0 +1,251 @@
+data.aws_vpc.default: Reading...
+data.aws_ami.amazon_linux_2: Reading...
+data.aws_ami.amazon_linux_2: Read complete after 7s [id=ami-08739a9b976f7a0e1]
+data.aws_vpc.default: Read complete after 9s [id=vpc-0b5a91f12c118996d]
+data.aws_subnets.default: Reading...
+data.aws_subnets.default: Read complete after 0s [id=eu-west-1]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_instance.web will be created
+  + resource "aws_instance" "web" {
+      + ami                                  = "ami-08739a9b976f7a0e1"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = true
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = (known after apply)
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t2.micro"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = "devops-lab-key"
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "eu-west-1"
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = "subnet-0e54a7125ec8c5ead"
+      + tags                                 = {
+          + "Name" = "devops-lab4-web"
+        }
+      + tags_all                             = {
+          + "Name" = "devops-lab4-web"
+        }
+      + tenancy                              = (known after apply)
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = false
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options (known after apply)
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device (known after apply)
+
+      + secondary_network_interface (known after apply)
+    }
+
+  # aws_key_pair.this will be created
+  + resource "aws_key_pair" "this" {
+      + arn             = (known after apply)
+      + fingerprint     = (known after apply)
+      + id              = (known after apply)
+      + key_name        = "devops-lab-key"
+      + key_name_prefix = (known after apply)
+      + key_pair_id     = (known after apply)
+      + key_type        = (known after apply)
+      + public_key      = (known after apply)
+      + region          = "eu-west-1"
+      + tags_all        = (known after apply)
+    }
+
+  # aws_security_group.web_sg will be created
+  + resource "aws_security_group" "web_sg" {
+      + arn                    = (known after apply)
+      + description            = "Web access for devops-lab4"
+      + egress                 = (known after apply)
+      + id                     = (known after apply)
+      + ingress                = (known after apply)
+      + name                   = "devops-lab4-sg"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + region                 = "eu-west-1"
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Name" = "devops-lab4-sg"
+        }
+      + tags_all               = {
+          + "Name" = "devops-lab4-sg"
+        }
+      + vpc_id                 = "vpc-0b5a91f12c118996d"
+    }
+
+  # aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4 will be created
+  + resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
+      + arn                    = (known after apply)
+      + cidr_ipv4              = "0.0.0.0/0"
+      + id                     = (known after apply)
+      + ip_protocol            = "-1"
+      + region                 = "eu-west-1"
+      + security_group_id      = (known after apply)
+      + security_group_rule_id = (known after apply)
+      + tags_all               = {}
+    }
+
+  # aws_vpc_security_group_ingress_rule.allow_http_ipv4 will be created
+  + resource "aws_vpc_security_group_ingress_rule" "allow_http_ipv4" {
+      + arn                    = (known after apply)
+      + cidr_ipv4              = "0.0.0.0/0"
+      + from_port              = 80
+      + id                     = (known after apply)
+      + ip_protocol            = "tcp"
+      + region                 = "eu-west-1"
+      + security_group_id      = (known after apply)
+      + security_group_rule_id = (known after apply)
+      + tags_all               = {}
+      + to_port                = 80
+    }
+
+  # aws_vpc_security_group_ingress_rule.allow_ssh_ipv4 will be created
+  + resource "aws_vpc_security_group_ingress_rule" "allow_ssh_ipv4" {
+      + arn                    = (known after apply)
+      + cidr_ipv4              = "0.0.0.0/0"
+      + from_port              = 22
+      + id                     = (known after apply)
+      + ip_protocol            = "tcp"
+      + region                 = "eu-west-1"
+      + security_group_id      = (known after apply)
+      + security_group_rule_id = (known after apply)
+      + tags_all               = {}
+      + to_port                = 22
+    }
+
+  # local_file.ansible_inventory will be created
+  + resource "local_file" "ansible_inventory" {
+      + content              = (known after apply)
+      + content_base64sha256 = (known after apply)
+      + content_base64sha512 = (known after apply)
+      + content_md5          = (known after apply)
+      + content_sha1         = (known after apply)
+      + content_sha256       = (known after apply)
+      + content_sha512       = (known after apply)
+      + directory_permission = "0777"
+      + file_permission      = "0777"
+      + filename             = "/Users/Lukatoni/myworks/amalitech/advancedIac/iac-aws-terraform-ansible/ansible/inventory.ini"
+      + id                   = (known after apply)
+    }
+
+  # local_sensitive_file.private_key will be created
+  + resource "local_sensitive_file" "private_key" {
+      + content              = (sensitive value)
+      + content_base64sha256 = (known after apply)
+      + content_base64sha512 = (known after apply)
+      + content_md5          = (known after apply)
+      + content_sha1         = (known after apply)
+      + content_sha256       = (known after apply)
+      + content_sha512       = (known after apply)
+      + directory_permission = "0700"
+      + file_permission      = "0400"
+      + filename             = "/Users/Lukatoni/myworks/amalitech/advancedIac/iac-aws-terraform-ansible/ansible/devops-lab-key.pem"
+      + id                   = (known after apply)
+    }
+
+  # tls_private_key.ssh will be created
+  + resource "tls_private_key" "ssh" {
+      + algorithm                     = "RSA"
+      + ecdsa_curve                   = "P224"
+      + id                            = (known after apply)
+      + private_key_openssh           = (sensitive value)
+      + private_key_pem               = (sensitive value)
+      + private_key_pem_pkcs8         = (sensitive value)
+      + public_key_fingerprint_md5    = (known after apply)
+      + public_key_fingerprint_sha256 = (known after apply)
+      + public_key_openssh            = (known after apply)
+      + public_key_pem                = (known after apply)
+      + rsa_bits                      = 4096
+    }
+
+Plan: 9 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + key_name         = "devops-lab-key"
+  + private_key_path = "/Users/Lukatoni/myworks/amalitech/advancedIac/iac-aws-terraform-ansible/ansible/devops-lab-key.pem"
+  + public_dns       = (known after apply)
+  + public_ip        = (known after apply)
+  + ssh_user         = "ec2-user"
+tls_private_key.ssh: Creating...
+aws_security_group.web_sg: Creating...
+tls_private_key.ssh: Creation complete after 5s [id=aab7ab91aeb544f52f403d52d0ee95ab323a6249]
+aws_key_pair.this: Creating...
+local_sensitive_file.private_key: Creating...
+local_sensitive_file.private_key: Creation complete after 0s [id=f5263cc3ac5cb943c7eb5c6ff9a2aa74e1eddc19]
+aws_key_pair.this: Creation complete after 1s [id=devops-lab-key]
+aws_security_group.web_sg: Creation complete after 7s [id=sg-0e601c05ae21d9f92]
+aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Creating...
+aws_vpc_security_group_ingress_rule.allow_http_ipv4: Creating...
+aws_vpc_security_group_ingress_rule.allow_ssh_ipv4: Creating...
+aws_instance.web: Creating...
+aws_vpc_security_group_ingress_rule.allow_ssh_ipv4: Creation complete after 1s [id=sgr-007464cbd2021fc7d]
+aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Creation complete after 1s [id=sgr-086eb208929914258]
+aws_instance.web: Still creating... [00m10s elapsed]
+aws_vpc_security_group_ingress_rule.allow_http_ipv4: Still creating... [00m10s elapsed]
+aws_vpc_security_group_ingress_rule.allow_http_ipv4: Creation complete after 15s [id=sgr-0b16f9c25d4edab56]
+aws_instance.web: Still creating... [00m20s elapsed]
+aws_instance.web: Still creating... [00m30s elapsed]
+aws_instance.web: Creation complete after 36s [id=i-056e44db915cb5da8]
+local_file.ansible_inventory: Creating...
+local_file.ansible_inventory: Creation complete after 0s [id=0a2615aa6df612b440bd4c586473fa5c00467fed]
+
+Apply complete! Resources: 9 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+key_name = "devops-lab-key"
+private_key_path = "/Users/Lukatoni/myworks/amalitech/advancedIac/iac-aws-terraform-ansible/ansible/devops-lab-key.pem"
+public_dns = "ec2-3-249-188-105.eu-west-1.compute.amazonaws.com"
+public_ip = "3.249.188.105"
+ssh_user = "ec2-user"
