@@ -1,13 +1,13 @@
 variable "aws_region" {
   description = "AWS region to deploy into"
   type        = string
-  default     = "eu-west-1"
+  default     = "eu-north-1"
 }
 
 variable "project_name" {
   description = "Project name prefix for resource naming"
   type        = string
-  default     = "devops-lab4"
+  default     = "devops-lab"
 }
 
 variable "key_name" {
@@ -19,7 +19,7 @@ variable "key_name" {
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
-  default     = "t2.micro"
+  default     = "t3.micro"
 }
 
 variable "allowed_ssh_cidr" {
