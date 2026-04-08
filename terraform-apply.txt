@@ -1,7 +1,8 @@
+Acquiring state lock. This may take a few moments...
 data.aws_vpc.default: Reading...
 data.aws_ami.amazon_linux_2: Reading...
-data.aws_ami.amazon_linux_2: Read complete after 7s [id=ami-08739a9b976f7a0e1]
-data.aws_vpc.default: Read complete after 9s [id=vpc-0b5a91f12c118996d]
+data.aws_ami.amazon_linux_2: Read complete after 1s [id=ami-03fc391f1833b0d72]
+data.aws_vpc.default: Read complete after 2s [id=vpc-0b5a91f12c118996d]
 data.aws_subnets.default: Reading...
 data.aws_subnets.default: Read complete after 0s [id=eu-west-1]
 
@@ -13,7 +14,7 @@ Terraform will perform the following actions:
 
   # aws_instance.web will be created
   + resource "aws_instance" "web" {
-      + ami                                  = "ami-08739a9b976f7a0e1"
+      + ami                                  = "ami-03fc391f1833b0d72"
       + arn                                  = (known after apply)
       + associate_public_ip_address          = true
       + availability_zone                    = (known after apply)
@@ -219,26 +220,26 @@ Changes to Outputs:
   + ssh_user         = "ec2-user"
 tls_private_key.ssh: Creating...
 aws_security_group.web_sg: Creating...
-tls_private_key.ssh: Creation complete after 5s [id=aab7ab91aeb544f52f403d52d0ee95ab323a6249]
+tls_private_key.ssh: Creation complete after 4s [id=192b64e2b0cd41c0294b585ed304f180542a2fbf]
 aws_key_pair.this: Creating...
 local_sensitive_file.private_key: Creating...
-local_sensitive_file.private_key: Creation complete after 0s [id=f5263cc3ac5cb943c7eb5c6ff9a2aa74e1eddc19]
+local_sensitive_file.private_key: Creation complete after 0s [id=858cb5cc609bf60609222793601dd87a7d190a1a]
 aws_key_pair.this: Creation complete after 1s [id=devops-lab-key]
-aws_security_group.web_sg: Creation complete after 7s [id=sg-0e601c05ae21d9f92]
+aws_security_group.web_sg: Creation complete after 4s [id=sg-0ed1c514c3548e3c0]
+aws_instance.web: Creating...
+aws_vpc_security_group_ingress_rule.allow_ssh_ipv4: Creating...
 aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Creating...
 aws_vpc_security_group_ingress_rule.allow_http_ipv4: Creating...
-aws_vpc_security_group_ingress_rule.allow_ssh_ipv4: Creating...
-aws_instance.web: Creating...
-aws_vpc_security_group_ingress_rule.allow_ssh_ipv4: Creation complete after 1s [id=sgr-007464cbd2021fc7d]
-aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Creation complete after 1s [id=sgr-086eb208929914258]
+aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4: Creation complete after 1s [id=sgr-0c35078897ac2158d]
+aws_vpc_security_group_ingress_rule.allow_ssh_ipv4: Creation complete after 1s [id=sgr-02d91a323de77067d]
+aws_vpc_security_group_ingress_rule.allow_http_ipv4: Creation complete after 1s [id=sgr-072638756935446a8]
 aws_instance.web: Still creating... [00m10s elapsed]
-aws_vpc_security_group_ingress_rule.allow_http_ipv4: Still creating... [00m10s elapsed]
-aws_vpc_security_group_ingress_rule.allow_http_ipv4: Creation complete after 15s [id=sgr-0b16f9c25d4edab56]
 aws_instance.web: Still creating... [00m20s elapsed]
 aws_instance.web: Still creating... [00m30s elapsed]
-aws_instance.web: Creation complete after 36s [id=i-056e44db915cb5da8]
+aws_instance.web: Creation complete after 36s [id=i-0141ac11caaaef8bb]
 local_file.ansible_inventory: Creating...
-local_file.ansible_inventory: Creation complete after 0s [id=0a2615aa6df612b440bd4c586473fa5c00467fed]
+local_file.ansible_inventory: Creation complete after 0s [id=ede0f366db9f60b8d5a043b6a2f79ef2ccb161e5]
+Releasing state lock. This may take a few moments...
 
 Apply complete! Resources: 9 added, 0 changed, 0 destroyed.
 
@@ -246,6 +247,6 @@ Outputs:
 
 key_name = "devops-lab-key"
 private_key_path = "/Users/Lukatoni/myworks/amalitech/advancedIac/iac-aws-terraform-ansible/ansible/devops-lab-key.pem"
-public_dns = "ec2-3-249-188-105.eu-west-1.compute.amazonaws.com"
-public_ip = "3.249.188.105"
+public_dns = "ec2-3-255-146-36.eu-west-1.compute.amazonaws.com"
+public_ip = "3.255.146.36"
 ssh_user = "ec2-user"

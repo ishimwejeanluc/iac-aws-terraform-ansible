@@ -6,3 +6,6 @@ terraform/*.tfstate.*
 ansible/*.pem
 ansible/inventory.ini
 deepdive 
+backend-boostrap/.terraform/
+backend-boostrap/terraform.tfstate
+backend-boostrap/terraform.tfstate.*
